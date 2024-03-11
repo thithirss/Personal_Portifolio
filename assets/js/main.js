@@ -395,3 +395,36 @@ Description: Gerold - Personal Portfolio HTML5 Template
 		/* !contact form */
 	});
 })(jQuery);
+
+
+
+function sendEmail(event) {
+    event.preventDefault();
+
+    // Obtém os valores do formulário
+    var formData = {
+        conName: document.getElementById('conName').value,
+        conLName: document.getElementById('conLName').value,
+        conEmail: document.getElementById('conEmail').value,
+        conPhone: document.getElementById('conPhone').value,
+        conService: document.getElementById('conService').value,
+        conMessage: document.getElementById('conMessage').value
+    };
+
+    // Limpa os modais antes de tentar exibi-los novamente
+    $('#message_sent').modal('hide');
+    $('#message_fail').modal('hide');
+
+    // Envia os dados para o EmailJS
+    emailjs.send("service_3plfwbj", "template_57cfkqs", formData)
+        .then(function (response) {
+            console.log('E-mail enviado com sucesso', response);
+            // Exibe modal de sucesso
+            $('#message_sent').modal('show');
+        })
+        .catch(function (error) {
+            console.log('Erro ao enviar e-mail', error);
+            // Exibe modal de erro
+            $('#message_fail').modal('show');
+        });
+}

@@ -26,6 +26,21 @@
     <link rel="stylesheet" href="assets/css/magnific-popup.css">
     <link rel="stylesheet" href="assets/css/main.css">
     <link rel="stylesheet" href="assets/css/responsive.css">
+
+
+
+
+
+<script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+<script type="text/javascript">
+    (function () {
+        emailjs.init("VS7SNiwXXcJIy4K7l");
+    })();
+
+</script>
+
+
+
 </head>
 
 <body>
@@ -886,7 +901,7 @@
                             </div>
 
                             <div class="tj-contact-form">
-                                <form id="contact-form">
+                                <form id="contact-form" onsubmit="sendEmail(event)">
                                     <div class="row gx-3">
                                         <div class="col-sm-6">
                                             <div class="form_group">
@@ -916,8 +931,8 @@
                                             <div class="form_group">
                                                 <select name="conService" id="conService" class="tj-nice-select">
                                                     <option value="" selected disabled>Qual serviço?</option>
-                                                    <option value="braning">Web Designer</option>
-                                                    <option value="web">Soluções digitais</option>
+                                                    <option value="Web Designer">Web Designer</option>
+                                                    <option value="Soluções digitais">Soluções digitais</option>
 
                                                     
                                                     <!-- <option value="uxui">UI/UX Design</option>
@@ -992,12 +1007,12 @@
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <span class="modal-title"><strong>Message Sent Successfully</strong></span>
+                        <span class="modal-title"><strong>Mensagem enviada com sucesso</strong></span>
                         <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close"><i
                                 class="fas fa-times"></i></button>
                     </div>
                     <div class="modal-body">
-                        <p>Thank you for contacting us. We will get back to you shortly.<br>Have a great day!</p>
+                        <p>Muito obrigado pelo seu contato, retornaremos em breve! <br>Tenha um bom dia!</p>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn" data-bs-dismiss="modal">Close</button>
@@ -1017,7 +1032,7 @@
                                 class="fas fa-times"></i></button>
                     </div>
                     <div class="modal-body">
-                        <p>Oops! Something went wrong, please try again.</p>
+                        <p>Ops! Alguma coisa deu errado. Por favor tente outra vez.</p>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn" data-bs-dismiss="modal">Close</button>
@@ -1075,6 +1090,7 @@
     <script src="assets/js/magnific-popup.js"></script>
     <script src="assets/js/validate.min.js"></script>
     <script src="assets/js/main.js"></script>
+
 </body>
 
 </html>
