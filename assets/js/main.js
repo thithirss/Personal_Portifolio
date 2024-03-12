@@ -254,16 +254,16 @@ Description: Gerold - Personal Portfolio HTML5 Template
 		const flat = "M0 2S175 1 500 1s500 1 500 1V0H0Z";
 
 		tl.to(".preloader-heading .load-text , .preloader-heading .cont", {
-			delay: 0.5,
+			delay: 0.3,
 			y: -100,
 			opacity: 0,
 		});
 		tl.to(svg, {
-			duration: 0.2,
+			duration: 0.3,
 			attr: { d: curve },
 			ease: "power2.easeIn",
 		}).to(svg, {
-			duration: 0.2,
+			duration: 0.3,
 			attr: { d: flat },
 			ease: "power2.easeOut",
 		});
