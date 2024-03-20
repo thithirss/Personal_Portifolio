@@ -473,7 +473,8 @@ body.loaded {
 .preloader {
 	position: fixed;
 	z-index: 10;
-	height: 100vh;
+	/* height: 100vh; */
+	height: 130vh;
 	width: 100%;
 	left: 0;
 	top: 0;
@@ -494,8 +495,11 @@ body.loaded {
 .preloader svg {
 	position: absolute;
 	top: 0;
-	width: 100vw;
-	height: 110vh;
+	/* width: 100vw;
+	height: 110vh; */
+
+	width: 100%;
+	height: 100%;
 	fill: var(--tj-black-2);
 }
 
@@ -3466,7 +3470,7 @@ body.absolute_header .breadcrumb_area {
 
 @media screen and (min-width: 1024px) {
 	body {
-	  zoom: 85%;
+	  zoom: 80%;
 	  /* Ajuste o valor conforme necessário */
 	}
   }
