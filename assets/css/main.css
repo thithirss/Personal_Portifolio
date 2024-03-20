@@ -3462,3 +3462,11 @@ body.absolute_header .breadcrumb_area {
 }
 
 /* END: Modal CSS */
+
+
+@media screen and (min-width: 1024px) {
+	body {
+	  zoom: 85%;
+	  /* Ajuste o valor conforme necessário */
+	}
+  }
