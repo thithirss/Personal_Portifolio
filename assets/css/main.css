@@ -1858,9 +1858,13 @@ body.loaded {
 
 .skills-widget .skill-inner {
 	border-radius: 25px;
-	padding: 40px 15px 30px;
+	padding: 35px 15px;
 	background: var(--tj-theme-accent-2);
 	border: 1px solid transparent;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	min-height: 132px;
 	margin-bottom: 15px;
 	-webkit-transition: 0.6s;
 	-o-transition: 0.6s;
@@ -1873,17 +1877,44 @@ body.loaded {
 }
 
 .skills-widget .skill-item .icon-box {
-	max-width: 60px;
+	max-width: 84px;
 	width: 100%;
-	margin: 0 auto 30px;
+	margin: 0 auto;
 }
 
 .skills-widget .skill-item .icon-box img {
+	max-height: 60px;
+	object-fit: contain;
 	filter: grayscale(90%);
 	-webkit-filter: grayscale(90%);
 	-webkit-transition: 0.3s;
 	-o-transition: 0.3s;
 	transition: 0.3s;
+}
+
+.skills-widget .skill-item .icon-box i,
+.skills-widget .skill-item .skill-mark {
+	color: var(--tj-grey-1);
+	display: block;
+	font-size: 60px;
+	font-weight: 800;
+	line-height: 1;
+	transition: 0.3s;
+}
+
+.skills-widget .skill-item .skill-mark {
+	font-size: 25px;
+	letter-spacing: -1px;
+}
+
+.skills-widget .skill-item .skill-mark-small {
+	font-size: 21px;
+}
+
+.skills-widget .skill-item:hover .icon-box i,
+.skills-widget .skill-item:hover .skill-mark {
+	color: var(--tj-theme-primary);
+	transform: scale(1.1);
 }
 
 .skills-widget .skill-item:hover .icon-box img {
@@ -1892,17 +1923,6 @@ body.loaded {
 	-webkit-transform: scale(1.1);
 	-ms-transform: scale(1.1);
 	transform: scale(1.1);
-}
-
-.skills-widget .skill-item .number {
-	color: var(--tj-grey-1);
-	font-weight: 800;
-	font-size: 20px;
-	line-height: 1;
-}
-
-.skills-widget .skill-item:hover .number {
-	color: var(--tj-theme-primary);
 }
 
 .skills-widget .skill-item p {

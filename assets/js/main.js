@@ -370,25 +370,11 @@ Description: Gerold - Personal Portfolio HTML5 Template
 				},
 
 				messages: {
-					conName: "Enter your name.",
-					conEmail: "Enter a valid email.",
+					conName: "Informe seu nome.",
+					conEmail: "Informe um e-mail válido.",
 				},
 				submitHandler: function (form) {
-					// start ajax request
-					$.ajax({
-						type: "POST",
-						url: "assets/mail/contact-form.php",
-						data: $("#contact-form").serialize(),
-						cache: false,
-						success: function (data) {
-							if (data == "Y") {
-								$("#message_sent").modal("show");
-								$("#contact-form").trigger("reset");
-							} else {
-								$("#message_fail").modal("show");
-							}
-						},
-					});
+					sendEmail(form);
 				},
 			});
 		}
@@ -398,33 +384,48 @@ Description: Gerold - Personal Portfolio HTML5 Template
 
 
 
-function sendEmail(event) {
-    event.preventDefault();
+function sendEmail(form) {
+    var firstName = document.getElementById('conName').value.trim();
+    var lastName = document.getElementById('conLName').value.trim();
+    var email = document.getElementById('conEmail').value.trim();
+    var phone = document.getElementById('conPhone').value.trim();
+    var service = document.getElementById('conService').value;
+    var message = document.getElementById('conMessage').value.trim();
 
-    // Obtém os valores do formulário
+    // Os nomes abaixo correspondem às variáveis do template do EmailJS.
     var formData = {
-        conName: document.getElementById('conName').value,
-        conLName: document.getElementById('conLName').value,
-        conEmail: document.getElementById('conEmail').value,
-        conPhone: document.getElementById('conPhone').value,
-        conService: document.getElementById('conService').value,
-        conMessage: document.getElementById('conMessage').value
+        name: [firstName, lastName].filter(Boolean).join(' '),
+        email: email,
+        title: service || 'Contato pelo portfólio',
+        time: new Date().toLocaleString('pt-BR'),
+        message: (phone ? 'Telefone: ' + phone + '\n' : '') +
+            (service ? 'Serviço de interesse: ' + service + '\n\n' : '') +
+            message
     };
 
-    // Limpa os modais antes de tentar exibi-los novamente
+    var submitButton = form.querySelector('button[type="submit"]');
+    var originalButtonText = submitButton.textContent;
+    submitButton.disabled = true;
+    submitButton.textContent = 'Enviando...';
+
     $('#message_sent').modal('hide');
     $('#message_fail').modal('hide');
 
     // Envia os dados para o EmailJS
-    emailjs.send("service_3plfwbj", "template_57cfkqs", formData)
+    emailjs.send("service_uh176tx", "template_vnnpxe3", formData)
         .then(function (response) {
-            console.log('E-mail enviado com sucesso', response);
-            // Exibe modal de sucesso
+            form.reset();
+            if ($.fn.niceSelect) {
+                $('#conService').niceSelect('update');
+            }
             $('#message_sent').modal('show');
         })
         .catch(function (error) {
-            console.log('Erro ao enviar e-mail', error);
-            // Exibe modal de erro
+            console.error('Erro ao enviar e-mail', error);
             $('#message_fail').modal('show');
+        })
+        .finally(function () {
+            submitButton.disabled = false;
+            submitButton.textContent = originalButtonText;
         });
 }
